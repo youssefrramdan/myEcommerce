@@ -6,11 +6,10 @@ import {
   deleteUser,
   updateUser,
 } from "./user.controller.js";
-import { checkEmail } from "../../middlewares/checkEmail.js";
 import { protectedRoutes } from "../../auth/auth.controller.js";
 
 const userRouter = Router();
-userRouter.route("/").post(checkEmail, addUser).get(getAllUsers);
+userRouter.route("/").post(addUser).get(getAllUsers);
 userRouter
   .route("/:id")
   .get(protectedRoutes,getSpecificUser)
